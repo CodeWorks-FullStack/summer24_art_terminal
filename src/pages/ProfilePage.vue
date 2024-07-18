@@ -32,20 +32,44 @@ async function getProfileById(profileId) {
   <!-- NOTE because this property is null on page load, we have to do this check -->
   <div v-if="profile" class="container">
     <section class="row">
-      <div class="col-12">
+      <div class="col-12 my-3">
         <div class="text-center cover-img">
-          <img :src="profile.picture" :alt="profile.name" class="profile-img">
-          <h1>{{ profile.name }}</h1>
+          <div>
+            <img :src="profile.picture" :alt="profile.name" class="profile-img">
+            <!-- NOTE only apply the font class if the profile has graduated -->
+            <h1 :class="{ 'playwrite-fr-trad-art-school-grad': profile.graduated }">
+              {{ profile.name }}
+              <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank">
+                <i class="mdi mdi-linkedin"></i>
+              </a>
+            </h1>
+          </div>
         </div>
       </div>
+      <div class="col-12">
+        <p>{{ profile.bio }}</p>
+      </div>
     </section>
+  </div>
+  <div v-else class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Loading.... <i class="mdi mdi-loading mdi-spin"></i></h1>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Trad:wght@100..400&display=swap');
+
+h1 {
+  text-shadow: 1px 1px black;
+}
+
 .profile-img {
-  height: 35.6vh;
+  height: 30vh;
 }
 
 .cover-img {
@@ -54,8 +78,17 @@ async function getProfileById(profileId) {
   background-size: cover;
   background-position: center;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 400
+
+.playwrite-fr-trad-art-school-grad {
+  font-family: "Playwrite FR Trad", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 </style>

@@ -5,6 +5,8 @@ import { api } from "./AxiosService.js"
 
 class ProfilesService {
   async getProfileById(profileId) {
+    AppState.profile = null // gets rid of ghost data
+
     const response = await api.get(`api/profiles/${profileId}`)
     logger.log('GOT PROFILE 🕴️', response.data)
     const profile = new Profile(response.data)
