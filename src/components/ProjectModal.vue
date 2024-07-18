@@ -9,9 +9,12 @@ const project = computed(() => AppState.activeProject)
 <template>
   <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
+      <!-- NOTE don't load the inner content of the modal unless there is a project -->
       <div v-if="project" class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="projectModalLabel">{{ project.title }}</h1>
+          <h1 class="modal-title fs-5" id="projectModalLabel">
+            {{ project.title }} {{ project.projectImgs.length }} images
+          </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
