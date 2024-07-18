@@ -17,6 +17,7 @@ const editableAccountData = ref({
 async function updateAccount() {
   try {
     await accountService.updateAccount(editableAccountData.value)
+    Pop.success('Updated Account!')
   } catch (error) {
     Pop.error(error)
   }

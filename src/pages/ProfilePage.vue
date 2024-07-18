@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
 import Pop from '../utils/Pop.js';
 import { profilesService } from '../services/ProfilesService.js';
 import { useRoute } from 'vue-router';
@@ -16,7 +16,9 @@ const projects = computed(() => AppState.profileProjects) // NOTE make sure you 
 
 const route = useRoute()
 
-onMounted(() => {
+// NOTE watcheffect is a listener
+// NOTE if any variable changes inside of the watcheffect, it reruns the callback function
+watchEffect(() => {
   const profileId = route.params.profileId // gets our parameter out of the URL
   getProfileById(profileId) // pass down the id from the URL as an argument
   getProjectsByProfileId(profileId)
