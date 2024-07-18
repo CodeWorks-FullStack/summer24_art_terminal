@@ -3,6 +3,7 @@ import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop.js';
 import { projectsService } from '../services/ProjectsService.js';
 import { AppState } from '../AppState.js';
+import ProjectCard from '../components/ProjectCard.vue';
 
 const projects = computed(() => AppState.projects)
 
@@ -27,7 +28,9 @@ async function getProjects() {
       </div>
     </section>
     <section class="row">
-      {{ projects }}
+      <div v-for="project in projects" :key="project.id" class="col-md-4">
+        <ProjectCard :projectProp="project" />
+      </div>
     </section>
   </div>
 </template>
