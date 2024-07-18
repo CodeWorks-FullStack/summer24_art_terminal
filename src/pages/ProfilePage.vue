@@ -5,6 +5,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { useRoute } from 'vue-router';
 import { logger } from '../utils/Logger.js';
 import { AppState } from '../AppState.js';
+import { projectsService } from '../services/ProjectsService.js';
 
 const profile = computed(() => AppState.profile)
 
@@ -15,6 +16,7 @@ const route = useRoute()
 onMounted(() => {
   const profileId = route.params.profileId // gets our parameter out of the URL
   getProfileById(profileId) // pass down the id from the URL as an argument
+  getProjectsByProfileId(profileId)
 })
 
 async function getProfileById(profileId) {
@@ -22,6 +24,15 @@ async function getProfileById(profileId) {
     await profilesService.getProfileById(profileId)
   } catch (error) {
     Pop.error(error)
+  }
+}
+
+async function getProjectsByProfileId(profileId) {
+  try {
+    await projectsService.getProjectsByProfileId(profileId)
+  }
+  catch (error) {
+    Pop.error(error);
   }
 }
 </script>
