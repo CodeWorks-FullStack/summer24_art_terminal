@@ -13,7 +13,8 @@ defineProps({
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <h5 class="card-title" :title="`Created on ${projectProp.createdAt.toLocaleString()}`">{{ projectProp.title }}
+          <h5 class="card-title" :title="`Created on ${projectProp.createdAt.toLocaleString()}`">
+            {{ projectProp.title }}
           </h5>
           <!-- TODO make this button open the modal -->
           <button class="btn btn-primary">
