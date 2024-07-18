@@ -1,9 +1,16 @@
 <script setup>
 import { Project } from '../models/Project.js';
+import { projectsService } from '../services/ProjectsService.js';
 
-defineProps({
+// NOTE if you want access to prop values in your script, set defineProps to a variable
+const props = defineProps({
   projectProp: { type: Project, required: true }
 })
+
+function setActiveProject() {
+  // NOTE pulls the project object out of props
+  projectsService.setActiveProject(props.projectProp)
+}
 </script>
 
 
@@ -17,7 +24,8 @@ defineProps({
             {{ projectProp.title }}
           </h5>
           <!-- TODO make this button open the modal -->
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
+          <button @click="setActiveProject()" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#projectModal">
             <i class="mdi mdi-magnify-plus-outline"></i>
           </button>
         </div>

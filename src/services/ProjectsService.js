@@ -4,6 +4,9 @@ import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
 class ProjectsService {
+  setActiveProject(project) {
+    AppState.activeProject = project
+  }
   async getProjectsByProfileId(profileId) {
     AppState.profileProjects = []
 
