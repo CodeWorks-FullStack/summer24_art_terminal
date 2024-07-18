@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
+import { AppState } from '../AppState.js';
 
 
 const editableAccountData = ref({
@@ -20,6 +21,10 @@ async function updateAccount() {
     Pop.error(error)
   }
 }
+
+// NOTE fills up editable value with all properties from account object, but dumps them out first so there is no reference
+// spread operator is ...
+onMounted(() => { editableAccountData.value = { ...AppState.account } })
 
 </script>
 
