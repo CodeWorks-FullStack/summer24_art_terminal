@@ -52,6 +52,7 @@ async function getProfileById(profileId) {
   height: 60vh;
   background-image: v-bind(profileCoverImg);
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
