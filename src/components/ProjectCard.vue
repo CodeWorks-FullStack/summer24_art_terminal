@@ -11,14 +11,19 @@ defineProps({
   <div class="card">
     <img :src="projectProp.coverImg" class="card-img-top project-img" :alt="projectProp.title">
     <div class="card-body">
-      <h5 class="card-title" :title="`Created on ${projectProp.createdAt.toLocaleString()}`">{{ projectProp.title }}
-      </h5>
       <div class="d-flex justify-content-between align-items-center">
-        <!-- TODO make this button open the modal -->
-        <button class="btn btn-primary">
-          <i class="mdi mdi-magnify-plus-outline"></i>
-        </button>
-        <img :src="projectProp.creator.picture" :alt="projectProp.creator.name" class="creator-img">
+        <div>
+          <h5 class="card-title" :title="`Created on ${projectProp.createdAt.toLocaleString()}`">{{ projectProp.title }}
+          </h5>
+          <!-- TODO make this button open the modal -->
+          <button class="btn btn-primary">
+            <i class="mdi mdi-magnify-plus-outline"></i>
+          </button>
+        </div>
+        <RouterLink :to="{ name: 'Profile', params: { profileId: projectProp.creatorId } }"
+          :title="`Go to ${projectProp.creator.name}'s profile page`">
+          <img :src="projectProp.creator.picture" :alt="projectProp.creator.name" class="creator-img">
+        </RouterLink>
       </div>
     </div>
   </div>
