@@ -28,7 +28,7 @@ async function getProjects() {
       </div>
     </section>
     <section class="row">
-      <div v-for="project in projects" :key="project.id" class="col-md-4">
+      <div v-for="project in projects" :key="project.id" class="col-md-4 mb-3">
         <ProjectCard :projectProp="project" />
       </div>
     </section>
