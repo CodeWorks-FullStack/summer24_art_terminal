@@ -25,6 +25,7 @@ const routes = [
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
+    // NOTE you must be logged in to access this page, and if you are not logged in we redirect to Auth0 login form
     beforeEnter: authGuard
   }
 ]
