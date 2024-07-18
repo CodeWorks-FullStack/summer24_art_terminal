@@ -6,10 +6,13 @@ import { useRoute } from 'vue-router';
 import { logger } from '../utils/Logger.js';
 import { AppState } from '../AppState.js';
 import { projectsService } from '../services/ProjectsService.js';
+import ProjectCard from '../components/ProjectCard.vue';
 
 const profile = computed(() => AppState.profile)
 
 const profileCoverImg = computed(() => `url(${profile.value?.coverImg})`)
+
+const projects = computed(() => AppState.profileProjects) // NOTE make sure you are targeting the correct property in the appstate
 
 const route = useRoute()
 
@@ -59,6 +62,11 @@ async function getProjectsByProfileId(profileId) {
       </div>
       <div class="col-12">
         <p>{{ profile.bio }}</p>
+      </div>
+    </section>
+    <section class="row">
+      <div v-for="project in projects" :key="project.id" class="col-md-6 mb-3">
+        <ProjectCard :projectProp="project" />
       </div>
     </section>
   </div>

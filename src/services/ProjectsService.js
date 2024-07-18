@@ -5,8 +5,12 @@ import { api } from "./AxiosService.js"
 
 class ProjectsService {
   async getProjectsByProfileId(profileId) {
+    AppState.profileProjects = []
+
     const response = await api.get(`api/projects?creatorId=${profileId}`)
     logger.log('GOT PROJECTS BY PROFILE ID🕴️🖼️🖼️🖼️', response.data)
+    const projects = response.data.map(projectPOJO => new Project(projectPOJO))
+    AppState.profileProjects = projects
   }
   async getProjects() {
     const response = await api.get('api/projects')
