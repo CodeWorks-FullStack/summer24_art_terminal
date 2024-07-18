@@ -17,7 +17,7 @@ defineProps({
             {{ projectProp.title }}
           </h5>
           <!-- TODO make this button open the modal -->
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
             <i class="mdi mdi-magnify-plus-outline"></i>
           </button>
         </div>

@@ -33,6 +33,7 @@ async function getProjects() {
       </div>
     </section>
   </div>
+
 </template>
 
 <style scoped lang="scss"></style>

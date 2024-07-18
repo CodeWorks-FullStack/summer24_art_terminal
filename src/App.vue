@@ -15,6 +15,9 @@ import Navbar from './components/Navbar.vue'
   <footer class="bg-dark text-light">
     Made with 💖 by CodeWorks
   </footer>
+
+  <!-- NOTE if you want a component accessible to all pages, inject it in the App Vue -->
+  <ProjectModal />
 </template>
 
 <style lang="scss">
